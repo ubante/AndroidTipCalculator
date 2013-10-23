@@ -8,11 +8,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.text.Editable;
+import java.util.Locale;
 
 public class TipCalculatorActivity extends Activity {
 	public EditText etInputBillTotal;
 	public TextView tvOutputTip;
-
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +31,32 @@ public class TipCalculatorActivity extends Activity {
 		return true;
 	}
 
+	boolean isNumeric (String s) {
+	/*
+		If user inputs something other than a number, makeAnswer throws an NFE and the emulator crashes.
+	*/
+		try {
+			Double.parseDouble(s);
+		}
+		catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
+	}
+
 	String makeAnswer(double percentage) {
+		//Editable totalText = etInputBillTotal.getText();
+		//String total = totalText.toString();
 		String total = etInputBillTotal.getText().toString();
-		double dtip = Double.parseDouble(total) * percentage;
-		String tip = String.format("Tip is: $%.2f", dtip);
-		return tip;
+		
+		// Check if the user provided input is a number
+		if ( isNumeric(total) ) {
+			double dtip = Double.parseDouble(total) * percentage;
+			String tip = String.format(Locale.getDefault(), "Tip is: $%.2f", dtip);
+			return tip;
+		} else {
+			return "Please enter a number.asdf";
+		}
 	}
 	
 	public void onSubmit10(View v) {
@@ -54,8 +77,7 @@ public class TipCalculatorActivity extends Activity {
 	public void onSubmit1(View v) {
 		String total = etInputBillTotal.getText().toString();
 		double dtip = Double.parseDouble(total) * 0.15;
-		String tip = String.format("Tip is:    $%.2f", dtip);
-		//String tip = String.format("Tip is:");
+		String tip = String.format(Locale.getDefault(), "Tip is:    $%.2f", dtip);
 		tvOutputTip.setText(tip);
 	}
 }

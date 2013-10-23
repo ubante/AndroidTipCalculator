@@ -35,7 +35,6 @@
         android:layout_alignBottom="@+id/btnPercent15"
         android:layout_toLeftOf="@+id/btnPercent15"
        	android:onClick="onSubmit10"
-        
         android:text="@string/submit_label10" />
 
     <Button
