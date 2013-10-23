@@ -25,7 +25,7 @@
         android:layout_above="@+id/tvOutputTip"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="146dp"
-        android:onClick="onSubmit15"
+        android:onClick="onSubmit" android:tag="0.15"
         android:text="@string/submit_label15" />
 
     <Button
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/btnPercent15"
         android:layout_toLeftOf="@+id/btnPercent15"
-       	android:onClick="onSubmit10"
+       	android:onClick="onSubmit" android:tag="0.10"
         android:text="@string/submit_label10" />
 
     <Button
@@ -44,7 +44,7 @@
         android:layout_alignBaseline="@+id/btnPercent15"
         android:layout_alignBottom="@+id/btnPercent15"
         android:layout_toRightOf="@+id/btnPercent15"
-        android:onClick="onSubmit20"
+        android:onClick="onSubmit" android:tag="0.20"
         android:text="@string/submit_label20" />
 
     <EditText

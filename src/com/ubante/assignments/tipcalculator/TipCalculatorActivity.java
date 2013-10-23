@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.text.Editable;
 import java.util.Locale;
 
 public class TipCalculatorActivity extends Activity {
@@ -55,22 +54,14 @@ public class TipCalculatorActivity extends Activity {
 			String tip = String.format(Locale.getDefault(), "Tip is: $%.2f", dtip);
 			return tip;
 		} else {
-			return "Please enter a number.asdf";
+			return "Please enter a number.";
 		}
 	}
-	
-	public void onSubmit10(View v) {
-		String tip = makeAnswer(0.10);
-		tvOutputTip.setText(tip);
-	}
 
-	public void onSubmit15(View v) {
-		String tip = makeAnswer(0.15);
-		tvOutputTip.setText(tip);
-	}
-
-	public void onSubmit20(View v) {
-		String tip = makeAnswer(0.20);
+	public void onSubmit(View v) {
+	// Some of this casting has to go1
+		double tipPercent = Double.parseDouble((String) v.getTag());
+		String tip = makeAnswer(tipPercent);
 		tvOutputTip.setText(tip);
 	}
 
